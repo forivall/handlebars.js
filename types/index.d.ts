@@ -70,9 +70,7 @@ declare namespace Handlebars {
   export function registerDecorator(name: string, fn: Function): void;
   export function unregisterDecorator(name: string): void;
 
-  export function K(): void;
   export function createFrame(object: any): any;
-  export function blockParams(obj: any[], ids: any[]): any[];
   export function log(level: number, obj: any): void;
 
   export function compile<T = any>(input: any, options?: CompileOptions): HandlebarsTemplateDelegate<T>;
@@ -151,6 +149,7 @@ declare namespace Handlebars {
   }
 
   export class Visitor implements ICompiler {
+      parents: hbs.AST.Node[];
       accept(node: hbs.AST.Node): void;
       acceptKey(node: hbs.AST.Node, name: string): void;
       acceptArray(arr: hbs.AST.Expression[]): void;
